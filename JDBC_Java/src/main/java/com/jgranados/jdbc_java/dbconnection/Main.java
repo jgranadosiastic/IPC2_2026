@@ -13,5 +13,8 @@ public class Main {
         System.out.println("Hello World!");
         DBConnection connection = new DBConnection();
         connection.connect();
+        //connection.crearTabla();
+        //connection.insertarAutor();
+        connection.consultarTodosAutores();
     }
 }
