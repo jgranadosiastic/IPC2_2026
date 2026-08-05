@@ -15,6 +15,9 @@ public class Main {
         connection.connect();
         //connection.crearTabla();
         //connection.insertarAutor();
-        connection.consultarTodosAutores();
+        //connection.consultarTodosAutores();
+        //connection.consultarAutores();
+        //connection.consultarAutoresNOSQLInjection();
+        connection.ejecutarTransaccion();
     }
 }
