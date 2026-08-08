@@ -219,7 +219,7 @@ public class DBConnection {
             insertLibroStatement.setString(2, nombreLibro);
             insertLibroStatement.setString(3, codigoAutor);
             insertLibroStatement.execute();
-            
+
             connection.commit();
 
         } catch (SQLException e) {
@@ -227,9 +227,21 @@ public class DBConnection {
                 connection.rollback();
             } catch (SQLException ex) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    connection.setAutoCommit(true);
+                } catch (SQLException ex) {
+                    System.getLogger(DBConnection.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                }
             }
             // manejar excepcion
             e.printStackTrace();
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException ex) {
+                System.getLogger(DBConnection.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
         }
     }
 }
