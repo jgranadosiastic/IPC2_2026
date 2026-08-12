@@ -14,7 +14,7 @@ public class Main {
         DBConnection connection = new DBConnection();
         connection.connect();
         //connection.crearTabla();
-        //connection.insertarAutor();
+        connection.insertarAutor();
         //connection.consultarTodosAutores();
         //connection.consultarAutores();
         //connection.consultarAutoresNOSQLInjection();
