@@ -213,6 +213,7 @@ public class DBConnection {
             insertAutorStatement.setString(1, codigoAutor);
             insertAutorStatement.setString(2, nombreAutor);
             insertAutorStatement.execute();
+            // comentario
 
             PreparedStatement insertLibroStatement = connection.prepareStatement(insertLibro);
             insertLibroStatement.setString(1, isbn);
