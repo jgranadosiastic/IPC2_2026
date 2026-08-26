@@ -54,3 +54,4 @@ buildNumber.properties
 /app-angular/.ng-dev.user*
 /app-angular/.eslintcache
 /rest-api-app/target/
+/static-app/nbproject/private/
