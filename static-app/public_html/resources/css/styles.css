@@ -1,0 +1,21 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Aug 27, 2026, 8:00:45 PM
+    Author     : jose
+*/
+h1 {
+    background: blue;
+    color: white;
+    border-style: dashed;
+}
+
+.h1-borde-linea {
+    border-style: solid;
+}
+
+
+
+
