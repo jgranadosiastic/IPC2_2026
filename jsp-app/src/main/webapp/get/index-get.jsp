@@ -12,6 +12,13 @@
         <title>Index GET</title>
     </head>
     <body>
+        <form method="GET">
+            <label>texto</label>
+            <br>
+            <input name="texto"/>
+            <br>
+            <button type="submit">Guardar</button>
+        </form>
         <%! int valor = 50;%>
         <h1>Hola mundo!!</h1>
         scriptlet
@@ -28,13 +35,15 @@
         %>
         <%
             String valor2 = request.getParameter("valor2");
-            Integer valor2Int = Integer.valueOf(valor2);
+            
+            Integer valor2Int = valor2 != null ? Integer.valueOf(valor2) : 0;
         %>
         <h1><%= suma(valor, valor2Int)%></h1>
     </body>
 </html>
 
 <%!
+
     int suma(int num1, int num2) {
         return num1 + num2;
     }
