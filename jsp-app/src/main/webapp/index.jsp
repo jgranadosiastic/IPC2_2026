@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <jsp:include page="/includes/resources.jsp"/>
     </head>
     <body>
         <h1><% out.write("Hello World desde JSP!");             %></h1>
@@ -30,14 +31,14 @@
     </form>
     
     <h2>Formulario POST</h2> 
-    <form method="POST" action="get/index-get.jsp">
-        <label>texto</label>
+    <form method="POST" action="post/manejar-post.jsp">
+        <label>titulo</label>
         <br>
-        <input name="texto"/>
+        <input name="titulo"/>
         <br>
-        <label>valor</label>
+        <label>fecha creacion</label>
         <br>
-        <input type="number" name="valor2"/>
+        <input type="date" name="fecha-creacion"/>
         <button type="submit">Guardar</button>
     </form>
 </html>
