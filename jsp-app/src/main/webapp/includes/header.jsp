@@ -15,10 +15,10 @@
             <li class="nav-item">
                 <a href="${pageContext.servletContext.contextPath}/index.jsp" class="nav-link active" aria-current="page">Home</a>
             </li> 
-            <!-- 
+
             <li class="nav-item"><a href="#" class="nav-link">Usuarios</a></li> 
-            <li class="nav-item"><a href="#" class="nav-link">Eventos</a></li> 
-            <li class="nav-item"><a href="#" class="nav-link">Eventos Ajax</a></li> 
+            <li class="nav-item"><a href="${pageContext.servletContext.contextPath}/mvc/eventos/eventos-servlet" class="nav-link">Eventos</a></li>
+            <!-- <li class="nav-item"><a href="#" class="nav-link">Eventos Ajax</a></li> 
             <li class="nav-item"><a href="#" class="nav-link">Files</a></li>
             <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             -->
