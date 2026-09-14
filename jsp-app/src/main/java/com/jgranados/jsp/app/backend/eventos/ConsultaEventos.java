@@ -7,7 +7,9 @@ package com.jgranados.jsp.app.backend.eventos;
 
 import com.jgranados.jsp.app.backend.database.EventosDB;
 import com.jgranados.jsp.app.backend.database.entidades.Evento;
+import com.jgranados.jsp.app.backend.exceptions.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -19,6 +21,18 @@ public class ConsultaEventos {
         EventosDB eventosDb = new EventosDB();
 
         return eventosDb.obtenerTodosLosEventos();
+    }
+    
+    public Evento obtenerEventoPorCodigo(String codigo) throws EntityNotFoundException {
+        EventosDB eventosDB = new EventosDB();
+        Optional<Evento> eventoOpt = eventosDB.obtenerEventoPorCodigo(codigo);
+        if (eventoOpt.isEmpty()) {
+            throw new EntityNotFoundException(
+                    String.format("El evento con codigo %s no existe", codigo)
+            );
+        }
+
+        return eventoOpt.get();
     }
     
 }

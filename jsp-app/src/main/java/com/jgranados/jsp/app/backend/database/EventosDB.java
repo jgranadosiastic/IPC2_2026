@@ -73,4 +73,41 @@ public class EventosDB {
         }
         return eventos;
     }
+    
+    public Optional<Evento> obtenerEventoPorCodigo(String codigo) {
+        Connection connection = DBConnectionSingleton.getInstance().getConnection();
+        try (PreparedStatement query = connection.prepareStatement(ENCONTRAR_EVENTO_POR_CODIGO_QUERY);) {
+            query.setString(1, codigo);
+            ResultSet resultSet = query.executeQuery();
+            if (resultSet.next()) {
+                Evento evento = new Evento(resultSet.getString("codigo"),
+                        resultSet.getString("nombre"),
+                        TipoEventoEnum.valueOf(resultSet.getString("tipo")),
+                        resultSet.getInt("limite")
+                );
+
+                return Optional.of(evento);
+            }
+        } catch (SQLException e) {
+            // manejar o propagar la exception
+            e.printStackTrace();
+        }
+
+        return Optional.empty();
+    }
+
+    public void actualizarEvento(Evento evento) {
+        Connection connection = DBConnectionSingleton.getInstance().getConnection();
+        try (PreparedStatement insert = connection.prepareStatement(ACTUALIZAR_EVENTO_QUERY);) {
+
+            insert.setString(1, evento.getNombre());
+            insert.setString(2, evento.getTipo().toString());
+            insert.setInt(3, evento.getLimite());
+            insert.setString(4, evento.getCodigo());
+            insert.executeUpdate();
+        } catch (SQLException e) {
+            // manejar o propagar la exception
+            e.printStackTrace();
+        }
+    }
 }

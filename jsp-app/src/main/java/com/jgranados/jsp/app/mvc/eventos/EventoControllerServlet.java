@@ -9,7 +9,7 @@ import com.jgranados.jsp.app.backend.exceptions.UserDataInvalidException;
 import com.jgranados.jsp.app.backend.eventos.ConsultaEventos;
 import com.jgranados.jsp.app.backend.eventos.CreadorEventos;
 import com.jgranados.jsp.app.backend.exceptions.EntityAlreadyExistsException;
-import jakarta.persistence.EntityNotFoundException;
+import com.jgranados.jsp.app.backend.exceptions.EntityNotFoundException;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -63,12 +63,29 @@ public class EventoControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ConsultaEventos consultaEventos = new ConsultaEventos();
-        List<Evento> eventosList = consultaEventos.obtenerTodosLosEventos();
 
-        request.setAttribute("eventos", eventosList);
-        RequestDispatcher dispatcher = getServletContext()
-                .getRequestDispatcher("/mvc/eventos/listado.jsp");
-        dispatcher.forward(request, response);
+        if (obtenerTodos(request)) {
+            request.setAttribute("eventos", consultaEventos.obtenerTodosLosEventos());
+            RequestDispatcher dispatcher = getServletContext()
+                    .getRequestDispatcher("/mvc/eventos/listado.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            // busco el evento por codigo y redirijo a la vista
+            try {
+                Evento evento = consultaEventos.obtenerEventoPorCodigo(request.getParameter("codigo"));
+                request.setAttribute("evento", evento);
+            } catch (EntityNotFoundException e) {
+                request.setAttribute("error", e.getMessage());
+            }
+            
+            RequestDispatcher dispatcher = getServletContext()
+                    .getRequestDispatcher("/mvc/eventos/actualizar-form.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
+
+    private boolean obtenerTodos(HttpServletRequest request) {
+        return StringUtils.isBlank(request.getParameter("codigo"));
     }
 
 }
