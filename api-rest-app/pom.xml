@@ -63,12 +63,11 @@
             <version>${restapi}</version>
         </dependency>
         
-        <!-- Database pool -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
-            <version>11.0.11</version>
-            <scope>provided</scope>
+        <!-- utilitarios -->
+         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.18.0</version>
         </dependency>
         
     </dependencies>
