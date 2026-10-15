@@ -1,3 +1,10 @@
 <h3>Este es el componente counter</h3>
 <p>Cantidad de clicks: {{ count }} </p>
 <button type="button" (click)="increaseCount()" class="btn btn-success">Aumentar contador</button>
+
+<hr/>
+<h1>enlace de atributo de etiqueta</h1>
+<button type="button" class="btn btn-primary" (click)="changeStyle('text-primary')">Poner color Azul</button>
+<button type="button" class="btn btn-success" (click)="changeStyle('text-success')">Poner color verde</button>
+<button type="button" class="btn btn-danger" (click)="changeStyle('text-danger')">Poner color rojo</button>
+<p [class]="fontStyle">este es un parrafo de texto que cambia de estilo</p>
