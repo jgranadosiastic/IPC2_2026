@@ -15,4 +15,8 @@ export class EventsService {
   public getAllEvents(): Observable<Event[]> {
     return this.httpClient.get<Event[]>(`${this.restConstants.getApiURL()}/events`);
   }
+
+  public createNewEvent(event: Event): Observable<void> {
+    return this.httpClient.post<void>(`${this.restConstants.getApiURL()}/events`, event);
+  }
 }
