@@ -5,5 +5,7 @@ export interface Event {
     name: string,
     eventType: EventTypeEnum,
     limit: number,
+    startDate: Date,
+    price: number,
 
 }

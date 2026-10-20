@@ -8,4 +8,5 @@ import { EventsListComponent } from "../../components/events/events-list/events-
 })
 export class EventsPageComponent {
 
+  
 }
