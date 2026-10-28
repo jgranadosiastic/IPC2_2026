@@ -1,3 +1,14 @@
-@for (event of events(); track event.code) {
-  <app-event-card [event]="event"></app-event-card>
+@if(deleted()) {
+<div class="alert alert-success d-flex align-items-center">
+    <i class="bi bi-check-circle flex-shrink-0 me-2"></i>
+    <div>
+        Operacion realizada con exito.
+    </div>
+</div>
 }
+
+@for (event of events(); track event.code) {
+    <app-event-card [event]="event" (eventSelectedToDelete)="selectToDelete($event)"></app-event-card>
+}
+
+<app-confirmation-modal [selectedEvent]="eventToDelete()!" (confirmationExecuter)="deleteEvent()" />
