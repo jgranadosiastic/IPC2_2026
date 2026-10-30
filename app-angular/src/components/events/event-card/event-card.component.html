@@ -9,11 +9,13 @@
         <h6 class="card-subtitle mb-2 text-body-secondary">Fecha: {{ event.startDate | date:'MMMM, dd yyyy' }}</h6>
         <h6 class="card-subtitle mb-2 text-body-secondary">Precio: {{ event.price | currency:'Q' }}</h6>
 
+        @if(authService.hasRole('ADMIN')) {
         <a routerLink="/events/update/{{ event.code }}" class="btn btn-primary">Editar evento</a>
 
         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
             title="Delete event {{ event.code}}" (click)="deleteAction()">
             <i class="bi bi-trash"></i>
         </button>
+        }
     </div>
 </div>

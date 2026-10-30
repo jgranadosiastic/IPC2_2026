@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { EventsListComponent } from "../../../components/events/events-list/events-list.component";
 import { RouterLink } from "@angular/router";
+import { AuthService } from "../../../services/security/auth.service";
 
 @Component({
   selector: 'app-events-page',
@@ -9,5 +10,8 @@ import { RouterLink } from "@angular/router";
 })
 export class EventsPageComponent {
 
+  constructor(public readonly auth: AuthService) {
+    
+  }
   
 }
