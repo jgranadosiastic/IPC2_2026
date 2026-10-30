@@ -18,11 +18,11 @@ export class FilesService {
         let formData: FormData = new FormData();
         formData.append('fileObject', dataToSend.fileObject, dataToSend.fileObject.name);
         formData.append('name', dataToSend.name);
-        return this.httpClient.post<InfoFileResponse>(this.restConstants.API_URL + 'files', formData);
+        return this.httpClient.post<InfoFileResponse>(this.restConstants.API_URL + '/files', formData);
     }
 
     downloadFile(infoFile: InfoFileResponse): string {
-        return this.restConstants.API_URL + 'files?pathFile=' + infoFile.filePath + '&fileName=' + infoFile.fileName;
+        return this.restConstants.API_URL + '/files?pathFile=' + infoFile.filePath + '&fileName=' + infoFile.fileName;
     }
 
 }
